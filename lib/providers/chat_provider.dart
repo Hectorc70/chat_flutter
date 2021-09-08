@@ -8,9 +8,9 @@ class ChatProvider extends ChangeNotifier {
     return _chats
         .add({
           'service': 1,
-          'text': 'Hola',
+          'text': 'Hola como estas',
           'from': 'asaassaas',
-          'to': '0001',
+          'to': '0002',
           'read': false,
           'dateTime': '080920211358'
         })

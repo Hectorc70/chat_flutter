@@ -26,6 +26,7 @@ class _BodyChat extends StatefulWidget {
 class _BbodyChatState extends State<_BodyChat> {
   List<dynamic> _messages = [];
   bool isActive = true;
+  String toId = '0001';
   @override
   void initState() {
     super.initState();
@@ -38,9 +39,22 @@ class _BbodyChatState extends State<_BodyChat> {
         padding: EdgeInsetsDirectional.all(30.0),
         child: Stack(
           children: [
-            ListView(
-              children: [],
-            ),
+            Container(
+                child: ListView.builder(
+                    itemCount: _messages.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      if (_messages[index]['to'] == toId) {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [Text(_messages[index]['text'])],
+                        );
+                      } else {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [Text(_messages[index]['text'])],
+                        );
+                      }
+                    })),
             Align(
               alignment: AlignmentDirectional.bottomCenter,
               child: ButtonCustomSubmit(
@@ -62,6 +76,8 @@ class _BbodyChatState extends State<_BodyChat> {
     setState(() {
       isActive = true;
     });
+
+    await _getMessages();
   }
 
   Future _getMessages() async {
