@@ -1,6 +1,6 @@
 # chat_flutter
 
-A new Flutter project.
+Aplicacion de para crear demo para chats en tiempo real con Flutter y Firebase
 
 ## Getting Started
 
